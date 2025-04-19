@@ -1,0 +1,17 @@
+services:
+  app:
+    container_name: app
+    image: nginx:latest
+    volumes:
+      - ../configs/:/etc/nginx/conf.d
+      - ../dist:/usr/var/www
+    tty: true
+    stdin_open: true
+    ports:
+      - "80:80"
+    networks: 
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
